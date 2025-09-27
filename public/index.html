@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Session Manager</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WhatsApp Session Manager</h1>
+            <p>Create WhatsApp sessions easily</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <form id="sessionForm">
+                    <div class="input-group">
+                        <label for="phone">Phone Number (with country code):</label>
+                        <input type="text" id="phone" placeholder="+1234567890" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="method">Authentication Method:</label>
+                        <select id="method" required>
+                            <option value="qr">QR Code</option>
+                            <option value="code">Pairing Code</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="createBtn">Create Session</button>
+                </form>
+            </div>
+
+            <div id="status" class="status-container hidden">
+                <h3>Session Status</h3>
+                <div id="statusMessage"></div>
+                <div id="qrCode" class="qr-container hidden"></div>
+                <div id="pairingCode" class="code-container hidden"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
