@@ -8,8 +8,25 @@ import { Boom } from '@hapi/boom';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-let { default: _makeWaSocket, DisconnectReason, useMultiFileAuthState, fetchLatestBaileysVersion, 
-      makeCacheableSignalKeyStore, makeWALegacySocket, PHONENUMBER_MCC } = await import('@whiskeysockets/baileys');
+let { DisconnectReason, useMultiFileAuthState, fetchLatestBaileysVersion, 
+      makeCacheableSignalKeyStore, PHONENUMBER_MCC } = await import('@whiskeysockets/baileys');
+const {
+	default: _makeWaSocket,
+	makeWALegacySocket,
+	proto,
+	downloadContentFromMessage,
+	jidDecode,
+	areJidsSameUser,
+	generateWAMessage,
+	generateForwardMessageContent,
+	generateWAMessageFromContent,
+	WAMessageStubType,
+	extractMessageContent,
+	makeInMemoryStore,
+	getAggregateVotesInPollMessage,
+	prepareWAMessageMedia,
+	WA_DEFAULT_EPHEMERAL
+} = (await import("@whiskeysockets/baileys")).default
 
 const sessionFolder = "tmp";
 const sessions = new Map();
