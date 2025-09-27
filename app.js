@@ -26,7 +26,7 @@ app.use('/session', sessionService);
 
 // Serve frontend for root route
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, 'public', 'index.html'));
+    res.sendFile(join(__dirname, 'public', 'app.html'));
 });
 
 app.get('/health', (req, res) => {
