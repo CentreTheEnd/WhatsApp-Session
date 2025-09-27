@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Session Generator</title>
     <link rel="stylesheet" href="/style.css">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
     <div class="container">
@@ -16,84 +18,75 @@
                     </svg>
                 </div>
                 <h1>WhatsApp Web</h1>
-                <p>Generate WhatsApp session files for your phone number</p>
+                <p>Send and receive messages without keeping your phone online.</p>
             </div>
 
             <div class="login-container">
-                <div id="phone-input-section" class="section active">
-                    <h3>Enter your phone number</h3>
+                <div class="phone-input-section" id="phone-input-section">
+                    <h3><i data-feather="smartphone"></i> Enter your phone number</h3>
                     <div class="input-group">
-                        <select id="countryCode">
-                            <option value="1">US +1</option>
-                            <option value="44">UK +44</option>
-                            <option value="91">IN +91</option>
-                            <option value="966">SA +966</option>
-                            <option value="20">EG +20</option>
-                            <option value="971">AE +971</option>
-                            <option value="973">BH +973</option>
-                            <option value="974">QA +974</option>
-                            <option value="965">KW +965</option>
-                            <option value="968">OM +968</option>
-                        </select>
-                        <input type="tel" id="phoneNumber" placeholder="Phone number" maxlength="15">
+                        <input type="tel" id="phoneNumber" placeholder="Full international number (e.g. 15551234567)" maxlength="15">
                     </div>
                     
                     <div class="auth-methods">
                         <label>
                             <input type="radio" name="authMethod" value="qr" checked> 
-                            QR Code Authentication
+                            <i data-feather="maximize"></i> QR Code Authentication
                         </label>
                         <label>
                             <input type="radio" name="authMethod" value="code">
-                            Pairing Code Authentication
+                            <i data-feather="hash"></i> SMS Code Authentication
                         </label>
                     </div>
 
-                    <button id="startAuth" class="btn-primary">Generate Session</button>
+                    <button id="startAuth" class="btn-primary">
+                        <i data-feather="play" class="btn-icon"></i> Generate Session
+                    </button>
                 </div>
 
-                <div id="qr-section" class="section">
-                    <h3>Scan QR Code</h3>
+                <div class="qr-section hidden" id="qr-section">
+                    <h3><i data-feather="maximize"></i> Scan QR Code</h3>
                     <div id="qrCodeContainer">
                         <img id="qrCodeImage" alt="QR Code">
                     </div>
                     <p>Open WhatsApp on your phone > Menu > Linked Devices > Link a Device</p>
-                    <div class="button-group">
-                        <button id="checkStatus" class="btn-secondary">Check Status</button>
-                        <button id="cancelQr" class="btn-cancel">Cancel</button>
-                    </div>
+                    <button id="checkStatus" class="btn-secondary">
+                        <i data-feather="refresh-cw" class="btn-icon"></i> Check Connection Status
+                    </button>
                 </div>
 
-                <div id="code-section" class="section">
-                    <h3>Pairing Code</h3>
+                <div class="code-section hidden" id="code-section">
+                    <h3><i data-feather="hash"></i> Pairing Code</h3>
                     <div id="pairingCodeContainer" class="code-display">
                         <span id="pairingCode"></span>
                     </div>
                     <p>Enter this code in WhatsApp > Menu > Linked Devices > Link a Device</p>
-                    <div class="button-group">
-                        <button id="checkStatusCode" class="btn-secondary">Check Status</button>
-                        <button id="cancelCode" class="btn-cancel">Cancel</button>
-                    </div>
+                    <button id="checkStatusCode" class="btn-secondary">
+                        <i data-feather="refresh-cw" class="btn-icon"></i> Check Connection Status
+                    </button>
                 </div>
 
-                <div id="status-section" class="section">
+                <div class="status-section hidden" id="status-section">
                     <div id="statusMessage" class="status-message"></div>
-                    <div id="sessionInfo" class="session-info">
-                        <h4>Session Ready!</h4>
+                    <div id="sessionInfo" class="session-info hidden">
+                        <h4><i data-feather="check-circle"></i> Session Ready!</h4>
                         <p>Your session files have been generated and sent to your WhatsApp.</p>
-                        <p>Check your WhatsApp messages for the session files.</p>
-                        <button id="newSession" class="btn-primary">Start New Session</button>
+                        <button id="newSession" class="btn-primary">
+                            <i data-feather="plus" class="btn-icon"></i> Start New Session
+                        </button>
                     </div>
                 </div>
             </div>
 
             <div class="footer">
-                <p>Make sure your phone has an active internet connection</p>
-                <p class="warning">Keep your session files secure and do not share them</p>
+                <p><i data-feather="wifi"></i> Make sure your phone has an active internet connection</p>
             </div>
         </div>
     </div>
 
     <script src="/script.js"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>
