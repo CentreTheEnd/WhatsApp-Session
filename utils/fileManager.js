@@ -12,10 +12,12 @@ export const deleteSessionFiles = async (phone) => {
         if (fs.existsSync(sessionPath)) {
             fs.unlinkSync(sessionPath);
             console.log(`Session files deleted for ${phone}`);
+            return true;
         }
+        return false;
     } catch (error) {
         console.error('Error deleting session files:', error);
-        throw error;
+        return false;
     }
 };
 
@@ -31,19 +33,32 @@ export const cleanupOldSessions = async () => {
         const now = Date.now();
         const oneHour = 60 * 60 * 1000;
 
+        let deletedCount = 0;
         for (const file of files) {
-            const filePath = path.join(sessionsDir, file);
-            const stats = fs.statSync(filePath);
-            
-            if (now - stats.mtimeMs > oneHour) {
-                fs.unlinkSync(filePath);
-                console.log(`Deleted old session file: ${file}`);
+            if (file.endsWith('.json')) {
+                const filePath = path.join(sessionsDir, file);
+                const stats = fs.statSync(filePath);
+                
+                if (now - stats.mtimeMs > oneHour) {
+                    fs.unlinkSync(filePath);
+                    deletedCount++;
+                    console.log(`Deleted old session file: ${file}`);
+                }
             }
         }
+
+        console.log(`Cleanup completed: ${deletedCount} old sessions deleted`);
+        return deletedCount;
     } catch (error) {
         console.error('Error cleaning up old sessions:', error);
+        return 0;
     }
 };
 
 // Cleanup old sessions every hour
 setInterval(cleanupOldSessions, 60 * 60 * 1000);
+
+// Initial cleanup on startup
+cleanupOldSessions().then(count => {
+    console.log(`Initial cleanup: ${count} old sessions removed`);
+});
