@@ -10,7 +10,7 @@
     "setup": "mkdir -p sessions && echo 'Setup completed'"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "github:CentreTheEnd/Baileys",
+    "@whiskeysockets/baileys": "^6.4.0",
     "@hapi/boom": "^10.0.1",
     "axios": "^1.1.3",
     "cors": "^2.8.5",
