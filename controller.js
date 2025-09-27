@@ -16,6 +16,7 @@ router.get('/create', async (req, res) => {
             });
         }
 
+        /*
         if (!number.match(/^\+\d{10,15}$/)) {
             return res.status(400).json({
                 success: false,
@@ -23,6 +24,7 @@ router.get('/create', async (req, res) => {
                 example: '+201*********'
             });
         }
+        */
 
         const result = await createSession(number, method);
         
