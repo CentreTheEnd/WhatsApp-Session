@@ -16,11 +16,11 @@
                     </svg>
                 </div>
                 <h1>WhatsApp Web</h1>
-                <p>Send and receive messages without keeping your phone online.</p>
+                <p>Generate WhatsApp session files for your phone number</p>
             </div>
 
             <div class="login-container">
-                <div class="phone-input-section">
+                <div id="phone-input-section" class="section active">
                     <h3>Enter your phone number</h3>
                     <div class="input-group">
                         <select id="countryCode">
@@ -29,6 +29,11 @@
                             <option value="91">IN +91</option>
                             <option value="966">SA +966</option>
                             <option value="20">EG +20</option>
+                            <option value="971">AE +971</option>
+                            <option value="973">BH +973</option>
+                            <option value="974">QA +974</option>
+                            <option value="965">KW +965</option>
+                            <option value="968">OM +968</option>
                         </select>
                         <input type="tel" id="phoneNumber" placeholder="Phone number" maxlength="15">
                     </div>
@@ -40,36 +45,43 @@
                         </label>
                         <label>
                             <input type="radio" name="authMethod" value="code">
-                            SMS Code Authentication
+                            Pairing Code Authentication
                         </label>
                     </div>
 
                     <button id="startAuth" class="btn-primary">Generate Session</button>
                 </div>
 
-                <div class="qr-section hidden">
+                <div id="qr-section" class="section">
                     <h3>Scan QR Code</h3>
                     <div id="qrCodeContainer">
                         <img id="qrCodeImage" alt="QR Code">
                     </div>
                     <p>Open WhatsApp on your phone > Menu > Linked Devices > Link a Device</p>
-                    <button id="checkStatus" class="btn-secondary">Check Connection Status</button>
+                    <div class="button-group">
+                        <button id="checkStatus" class="btn-secondary">Check Status</button>
+                        <button id="cancelQr" class="btn-cancel">Cancel</button>
+                    </div>
                 </div>
 
-                <div class="code-section hidden">
+                <div id="code-section" class="section">
                     <h3>Pairing Code</h3>
                     <div id="pairingCodeContainer" class="code-display">
                         <span id="pairingCode"></span>
                     </div>
                     <p>Enter this code in WhatsApp > Menu > Linked Devices > Link a Device</p>
-                    <button id="checkStatusCode" class="btn-secondary">Check Connection Status</button>
+                    <div class="button-group">
+                        <button id="checkStatusCode" class="btn-secondary">Check Status</button>
+                        <button id="cancelCode" class="btn-cancel">Cancel</button>
+                    </div>
                 </div>
 
-                <div class="status-section hidden">
+                <div id="status-section" class="section">
                     <div id="statusMessage" class="status-message"></div>
-                    <div id="sessionInfo" class="session-info hidden">
+                    <div id="sessionInfo" class="session-info">
                         <h4>Session Ready!</h4>
-                        <p>Your session files have been generated and sent.</p>
+                        <p>Your session files have been generated and sent to your WhatsApp.</p>
+                        <p>Check your WhatsApp messages for the session files.</p>
                         <button id="newSession" class="btn-primary">Start New Session</button>
                     </div>
                 </div>
@@ -77,6 +89,7 @@
 
             <div class="footer">
                 <p>Make sure your phone has an active internet connection</p>
+                <p class="warning">Keep your session files secure and do not share them</p>
             </div>
         </div>
     </div>
