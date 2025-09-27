@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Session Manager</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/icon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="whatsapp-header">
+            <div class="header-content">
+                <img src="/icon.png" alt="WhatsApp" class="logo">
+                <h1>WhatsApp Session Manager</h1>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="session-form">
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" id="phoneNumber" placeholder="+201012345678" required>
+                    <small>Include country code (e.g., +20 for Egypt)</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Authentication Method</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="method" value="code" checked>
+                            <span class="radio-custom"></span>
+                            8-Digit Code
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="method" value="qr">
+                            <span class="radio-custom"></span>
+                            QR Code
+                        </label>
+                    </div>
+                </div>
+
+                <button id="createSessionBtn" class="btn-primary">
+                    Create Session
+                </button>
+            </div>
+
+            <div id="statusSection" class="status-section hidden">
+                <div class="status-header">
+                    <h3>Session Status</h3>
+                    <button id="clearSessionBtn" class="btn-secondary">Clear Session</button>
+                </div>
+                
+                <div id="statusContent" class="status-content">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+
+            <div id="qrSection" class="qr-section hidden">
+                <h3>Scan QR Code</h3>
+                <div id="qrCodeContainer">
+                    <img id="qrImage" src="" alt="QR Code">
+                </div>
+                <p>Open WhatsApp > Settings > Linked Devices > Link a Device</p>
+                <button id="refreshQrBtn" class="btn-secondary">Refresh QR Code</button>
+            </div>
+
+            <div id="codeSection" class="code-section hidden">
+                <h3>Pairing Code</h3>
+                <div class="code-display">
+                    <span id="pairingCode">---- ----</span>
+                </div>
+                <p>Enter this code in WhatsApp > Settings > Linked Devices > Link a Device</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Session files will be sent automatically after successful connection</p>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <div id="notification" class="notification hidden"></div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
