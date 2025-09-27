@@ -70,7 +70,7 @@ class WhatsAppSession {
       version,
     };
 
-    this.conn = makeWALegacySocket(connectionOptions);
+    this.conn = _makeWaSocket(connectionOptions);
     
     this.conn.ev.on('connection.update', (update) => this.handleConnectionUpdate(update));
     this.conn.ev.on('creds.update', saveCreds);
