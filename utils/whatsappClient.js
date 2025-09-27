@@ -1,4 +1,4 @@
-import makeWASocket from '@whiskeysockets/baileys';
+import { makeWASocket } from '@whiskeysockets/baileys';
 import { useSingleFileAuthState } from '@whiskeysockets/baileys';
 import { Boom } from '@hapi/boom';
 import qrcode from 'qrcode';
