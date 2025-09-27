@@ -1,12 +1,13 @@
 {
   "name": "whatsapp-session",
   "version": "1.0.0",
-  "description": "WhatsApp session linked with phone number.",
+  "description": "WhatsApp session manager with automatic file delivery",
   "main": "app.js",
   "type": "module",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "setup": "mkdir -p sessions && echo 'Setup completed'"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "github:CentreTheEnd/Baileys",
@@ -20,5 +21,13 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
-  }
+  },
+  "keywords": [
+    "whatsapp",
+    "session",
+    "baileys",
+    "express"
+  ],
+  "author": "CentreTheEnd",
+  "license": "MIT"
 }
