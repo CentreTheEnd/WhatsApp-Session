@@ -6,23 +6,23 @@
 
 body {
     font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
-    background: #f0f0f0;
+    background: #e6e6e6;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    max-width: 450px;
 }
 
 .whatsapp-container {
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     overflow: hidden;
 }
 
@@ -52,12 +52,19 @@ body {
     padding: 30px 20px;
 }
 
-.phone-input-section h3,
-.qr-section h3,
-.code-section h3 {
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.section h3 {
     margin-bottom: 20px;
     color: #41525d;
     font-weight: 400;
+    text-align: center;
 }
 
 .input-group {
@@ -72,6 +79,7 @@ body {
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     font-size: 14px;
+    background: white;
 }
 
 .input-group input {
@@ -82,53 +90,89 @@ body {
     font-size: 14px;
 }
 
+.input-group select:focus,
+.input-group input:focus {
+    outline: none;
+    border-color: #00a884;
+}
+
 .auth-methods {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .auth-methods label {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
     cursor: pointer;
     color: #41525d;
+    font-size: 14px;
+}
+
+.auth-methods input {
+    margin-right: 8px;
 }
 
 .btn-primary {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #00a884;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
     transition: background 0.3s;
+    font-weight: 500;
 }
 
 .btn-primary:hover {
     background: #008f71;
 }
 
+.btn-primary:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
 .btn-secondary {
-    width: 100%;
-    padding: 12px;
+    padding: 12px 20px;
     background: #f0f0f0;
     color: #41525d;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     font-size: 14px;
     cursor: pointer;
-    margin-top: 15px;
+    transition: background 0.3s;
 }
 
 .btn-secondary:hover {
     background: #e0e0e0;
 }
 
-.qr-section,
-.code-section,
-.status-section {
-    text-align: center;
+.btn-cancel {
+    padding: 12px 20px;
+    background: white;
+    color: #ff4444;
+    border: 1px solid #ff4444;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #fff0f0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    flex: 1;
 }
 
 #qrCodeContainer {
@@ -136,11 +180,14 @@ body {
     padding: 20px;
     background: #f8f8f8;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
 }
 
 #qrCodeImage {
-    max-width: 200px;
-    height: auto;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #e0e0e0;
 }
 
 .code-display {
@@ -148,10 +195,20 @@ body {
     font-weight: bold;
     color: #00a884;
     margin: 20px 0;
-    padding: 20px;
+    padding: 25px;
     background: #f8f8f8;
     border-radius: 8px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    text-align: center;
+    border: 2px dashed #00a884;
+}
+
+.section p {
+    text-align: center;
+    color: #667781;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 .status-message {
@@ -159,6 +216,7 @@ body {
     margin: 20px 0;
     border-radius: 4px;
     font-size: 14px;
+    text-align: center;
 }
 
 .status-message.success {
@@ -179,11 +237,28 @@ body {
     border: 1px solid #b3d7ff;
 }
 
+.status-message.warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
 .session-info {
-    margin-top: 20px;
+    text-align: center;
     padding: 20px;
     background: #f8f8f8;
     border-radius: 8px;
+    margin-top: 20px;
+}
+
+.session-info h4 {
+    color: #00a884;
+    margin-bottom: 10px;
+}
+
+.session-info p {
+    margin-bottom: 15px;
+    color: #667781;
 }
 
 .footer {
@@ -192,13 +267,63 @@ body {
     color: #8696a0;
     font-size: 12px;
     border-top: 1px solid #f0f0f0;
+    background: #f8f8f8;
 }
 
-.hidden {
-    display: none;
+.footer .warning {
+    color: #ff6b6b;
+    font-weight: 500;
+    margin-top: 5px;
 }
 
 .loading {
-    opacity: 0.6;
+    position: relative;
     pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    right: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .whatsapp-container {
+        border-radius: 0;
+    }
+    
+    .header {
+        padding: 20px 15px;
+    }
+    
+    .login-container {
+        padding: 20px 15px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
 }
