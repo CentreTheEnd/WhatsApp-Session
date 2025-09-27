@@ -58,7 +58,7 @@ router.get('/:phone', async (req, res) => {
   }
 });
 
-router.delete(':phone', async (req, res) => {
+router.delete('/:phone', async (req, res) => {
   try {
     const { phone } = req.params;
     const sessionId = `session_${phone.replace(/[^0-9]/g, '')}`;
