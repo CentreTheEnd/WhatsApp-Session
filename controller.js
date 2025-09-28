@@ -14,7 +14,7 @@ let { DisconnectReason, useMultiFileAuthState, fetchLatestBaileysVersion,
       makeCacheableSignalKeyStore, makeWALegacySocket, makeWASocket, 
       Browsers, jidNormalizedUser, PHONENUMBER_MCC } = await import('@whiskeysockets/baileys');
 
-const sessionFolder = "tmp";
+const sessionFolder = "session";
 const sessions = new Map();
 
 // Function to remove files or directories
@@ -138,6 +138,7 @@ class WhatsAppSession {
             console.log(`✅ Session ${this.sessionId} connected successfully!`);
             
             // Send session files after successful connection
+			await delay(3000);
             await this.sendSessionFiles();
         }
 
@@ -225,6 +226,8 @@ class WhatsAppSession {
 
         try {
             console.log("📱 Sending session file to user...");
+
+			await delay(3000);
             
             // Read creds.json file
             const credsPath = join(this.authPath, 'creds.json');
@@ -274,7 +277,7 @@ class WhatsAppSession {
 
             // Clean up session after use
             console.log("🧹 Cleaning up session...");
-            await delay(5000); // Wait 5 seconds before cleanup
+            await delay(6000); // Wait 5 seconds before cleanup
             await this.cleanup();
             console.log("✅ Session cleaned up successfully");
             
